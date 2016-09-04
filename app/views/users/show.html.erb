@@ -1,0 +1,144 @@
+<div class="container profile-cont">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @user.name if @user.name %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive"> </div>
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Department:</td>
+                        <td>Programming</td>
+                      </tr>
+                      <tr>
+                        <td>Country:</td>
+                        <td><%= @user.country %></td>
+                      </tr>
+                      <tr>
+                        <td>State:</td>
+                        <td><%= @user.state %></td>
+                      </tr>
+                      <tr>
+                        <td>School:</td>
+                        <td><%= @user.school %></td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td><%= @user.birthday %></td>
+                      </tr>
+                   
+                         <tr>
+                             <tr>
+                        <td>Gender</td>
+                        <td><%= @user.gender %></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><a href=""><%= @user.email if @user.email %></a></td>
+                      </tr>
+                        <td>Phone Number</td>
+                        <td><%= @user.phone_number %></td>
+                      </tr>
+                      <tr>
+                        <td>Job role:</td>
+                        <td><%= @user.job_role %></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  
+                  <a href="/learn" class="btn btn-success">Learn</a>
+                  <a href="/challenge" class="btn btn-success">Challenges</a>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">
+          Get a mentor 
+          </button>
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Please fill in this mentor form</h4>
+                  </div>
+                  <div class="container">
+                    <%= form_for [@user, @user.apps.build] do |f| %>
+                    <%= f.label :my_type %>
+                    <%= f.text_field :my_type %>
+                    <% end %>
+
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                  </div>
+                </div>
+              </div>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                        	<%= link_to '', edit_user_registration_path, { :class => "glyphicon glyphicon-edit btn btn-sm btn-warning", 'data-original-title' => "Edit this user", 'data-toggle' => "tooltip" } %>
+                        	<%= link_to '', destroy_user_session_path, :method=>'delete', :class => "glyphicon glyphicon-log-out btn btn-sm btn-warning" %>
+                        </span>
+                    </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});
+    </script>

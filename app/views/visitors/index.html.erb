@@ -1,0 +1,30 @@
+<div class="col-md-12 bg-container">
+	<div class="row">
+		<div class="bg-image">
+	    </div>
+    </div>
+</div>    
+<div id="landing-text" class="col-md-12">
+	<h1>A Team Of Data Scientists Is At Your Fingertips</h1>
+	<p>For data enthusiast, learn the skills required to make data driven business decisions.</p>
+</div>
+<div id="recent-challenges" class="col-md-12">
+	<div class="rc-header"><p>Recent Challenge</p>
+		<h1>hello</h1>
+	</div>
+	<% @challenges.each do |c| %>
+	<div class="panel panel-info challenge-box">
+		<div class="panel-header">
+			<%= c.title %>
+		</div>
+		<div class="panel-body">
+			<%= c.body %>
+		</div>
+		<div class="panel-footer">
+			<%= c.prize %>
+		</div>
+	</div>
+
+	<% end %>
+
+</div>
